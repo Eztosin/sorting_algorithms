@@ -16,8 +16,7 @@ size_t lomuto_partition(int *array, int low, int high,
 * Return: the index of the pivot.
 */
 
-size_t lomuto_partition(int *array, int low, int high,
-                        size_t size)
+size_t lomuto_partition(int *array, int low, int high, size_t size)
 {
 int pivot, i, j;
 
@@ -50,8 +49,7 @@ return (i + 1);
 * Return: Nothing.
 */
 
-void recursive_sort(int *array, int low, int high,
-size_t size)
+void recursive_sort(int *array, int low, int high, size_t size)
 {
 size_t pi;
 if (low < high)

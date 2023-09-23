@@ -24,9 +24,7 @@ void selection_sort(int *array, size_t size);
 void swap(int *array, int index1, int index2);
 void swap_ele(int *a, int *b);
 void quick_sort(int *array, size_t size);
-void recursive_sort(int *array, int low, int high,
-                    size_t size);
-size_t lomuto_partition(int *array, int low, int high,
-                        size_t size);
+void recursive_sort(int *array, int low, int high, size_t size);
+size_t lomuto_partition(int *array, int low, int high, size_t size);
 
 #endif
