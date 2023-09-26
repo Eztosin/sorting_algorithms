@@ -1,10 +1,8 @@
 #include "sort.h"
 
 void swap_ele(int *a, int *b);
-void recursive_sort(int *array, int low, int high,
-		    size_t size);
-size_t lomuto_partition(int *array, int low, int high,
-			size_t size);
+void recursive_sort(int *array, int low, int high, size_t size);
+size_t lomuto_partition(int *array, int low, int high, size_t size);
 
 /**
 * lomuto_partition - selects the last element as a pivot element and
@@ -18,27 +16,33 @@ size_t lomuto_partition(int *array, int low, int high,
 
 size_t lomuto_partition(int *array, int low, int high, size_t size)
 {
-int pivot, i, j;
+int pivot, start, end;
 
-pivot = array[high];
-i = low - 1;
+pivot = array[low];
+start = low;
+end = high;
 
-j = low;
-while (j <= high - 1)
+while (start < end)
 {
-
-if (array[j] < pivot)
+while (array[start] <= pivot)
 {
-i++;
-swap_ele(&array[i], &array[j]);
+start++;
+}
+while (array[end] > pivot)
+{
+end--;
+}
+if (start < end)
+{
+swap_ele(&array[start], &array[end]);
 print_array(array, size);
 }
-j++;
 }
-swap_ele(&array[i + 1], &array[high]);
+swap_ele(&array[low], &array[end]);
 print_array(array, size);
-return (i + 1);
+return (end);
 }
+
 
 /**
 * recursive_sort - implements quick sort recursively.
@@ -51,13 +55,13 @@ return (i + 1);
 
 void recursive_sort(int *array, int low, int high, size_t size)
 {
-size_t pi;
+size_t loc;
 if (low < high)
 {
-pi = lomuto_partition(array, low, high, size);
+loc = lomuto_partition(array, low, high, size);
 
-recursive_sort(array, low, pi - 1, size);
-recursive_sort(array, pi + 1, high, size);
+recursive_sort(array, low, loc - 1, size);
+recursive_sort(array, loc + 1, high, size);
 }
 }
 
